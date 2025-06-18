@@ -8,7 +8,8 @@ class AdminPanel {
     }
 
     init() {
-        this.checkAdminAccess();
+        // this.checkAdminAccess();
+        ы
         this.blockNavigation();
         this.initTabs();
         this.initModals();
