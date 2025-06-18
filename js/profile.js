@@ -8,7 +8,7 @@ class UserProfile {
     }
 
     init() {
-        this.checkUserAccess();
+        // this.checkUserAccess();
         this.initTabs();
         this.initModals();
         this.initForms();
