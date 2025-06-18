@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NEON SURVIVAL - Игры будущего</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Шапка сайта -->
+    <header class="header">
+        <div class="container">
+            <div class="logo">
+                <img src="images/logo.svg" alt="NEON SURVIVAL" class="logo-img">
+                <span class="logo-text">NEON SURVIVAL</span>
+            </div>
+            
+            <!-- Обычное меню -->
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="#rounds" class="nav-link">Арена</a></li>
+                    <li><a href="#stickers" class="nav-link">Стикеры</a></li>
+                    <li><a href="#faq" class="nav-link">FAQ</a></li>
+                    <li><a href="#contact" class="nav-link">Контакты</a></li>
+                    <li><a href="#" class="nav-link" id="navLoginBtn">Войти</a></li>
+                    <li><a href="#" class="nav-link" id="navLogoutBtn" style="display: none;">Выход</a></li>
+                </ul>
+                <div class="auth-buttons">
+                    <a id="profileBtn" href="profile.html" class="auth-btn profile-btn" style="display: none;">
+                        <span class="btn-icon">👤</span>
+                        Профиль
+                    </a>
+                    <a id="adminBtn" href="admin.html" class="auth-btn admin-btn" style="display: none;">
+                        <span class="btn-icon">⚙️</span>
+                        Админ
+                    </a>
+                </div>
+            </nav>
+
+            <!-- Бургер меню -->
+            <div class="burger-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <!-- Мобильное меню -->
+        <nav class="mobile-nav">
+            <ul class="mobile-nav-list">
+                <li><a href="#rounds" class="mobile-nav-link">Арена</a></li>
+                <li><a href="#stickers" class="mobile-nav-link">Стикеры</a></li>
+                <li><a href="#faq" class="mobile-nav-link">FAQ</a></li>
+                <li><a href="#contact" class="mobile-nav-link">Контакты</a></li>
+                <li><a href="#" class="mobile-nav-link" id="mobileLoginBtn">Войти</a></li>
+                <li><a href="#" class="mobile-nav-link" id="mobileLogoutBtn" style="display: none;">Выход</a></li>
+                <li><a href="profile.html" class="mobile-nav-link" id="mobileProfileBtn" style="display: none;">Профиль</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Баннер с слайдером -->
+        <section id="home" class="hero">
+            <div class="hero-slider">
+                <div class="slide active">
+                    <div class="slide-content">
+                        <h1 class="hero-title">NEON SURVIVAL</h1>
+                        <p class="hero-subtitle">100 участников. 50 миллионов кредитов. Только один выживший.</p>
+                        <button class="hero-btn" id="heroLoginBtn1">Войти в арену</button>
+                    </div>
+                    <div class="slide-bg slide-bg-1"></div>
+                </div>
+                
+                <div class="slide">
+                    <div class="slide-content">
+                        <h1 class="hero-title">КИБЕРПАНК АРЕНА</h1>
+                        <p class="hero-subtitle">Виртуальные испытания с реальными последствиями</p>
+                        <button class="hero-btn" id="heroLoginBtn2">Подключиться</button>
+                    </div>
+                    <div class="slide-bg slide-bg-2"></div>
+                </div>
+                
+                <div class="slide">
+                    <div class="slide-content">
+                        <h1 class="hero-title">НЕОНОВЫЙ ЛАБИРИНТ</h1>
+                        <p class="hero-subtitle">В мире будущего выживает только сильнейший разум</p>
+                        <button class="hero-btn" id="heroLoginBtn3">Начать испытание</button>
+                    </div>
+                    <div class="slide-bg slide-bg-3"></div>
+                </div>
+            </div>
+            
+            <div class="slider-controls">
+                <button class="slider-btn prev-btn">‹</button>
+                <div class="slider-dots">
+                    <span class="dot active" data-slide="0"></span>
+                    <span class="dot" data-slide="1"></span>
+                    <span class="dot" data-slide="2"></span>
+                </div>
+                <button class="slider-btn next-btn">›</button>
+            </div>
+        </section>
+
+        <!-- Блок с описанием сюжета -->
+        <section id="story" class="story">
+            <div class="container">
+                <h2 class="section-title">ИСТОРИЯ ПРОЕКТА</h2>
+                <div class="story-content">
+                    <div class="story-text">
+                        <h3>Виртуальная реальность, реальные ставки</h3>
+                        <p>100 добровольцев из киберпанк-мегаполиса 2089 года получают приглашение в секретную VR-арену. Место скрыто в глубинах даркнета. Единственная подсказка - серия цифровых испытаний, основанных на древних алгоритмах.</p>
+                        <p>Но есть одно отличие: неудача в виртуальном мире стирает сознание в реальном. Победитель получает все - 50 миллионов кредитов и свободу от системы.</p>
+                        <div class="story-rules">
+                            <h4>Протокол выживания:</h4>
+                            <ul>
+                                <li>Нельзя отключиться от сеанса</li>
+                                <li>Участник, который отказывается, стирается</li>
+                                <li>Испытания можно перезапустить голосованием</li>
+                                <li>Нарушение протокола ведет к исключению</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="story-image">
+                        <img src="images/story-image.webp" alt="NEON SURVIVAL - история">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блоки с описанием раундов -->
+        <section id="rounds" class="rounds">
+            <div class="container">
+                <h2 class="section-title">ШЕСТЬ ЦИФРОВЫХ ИСПЫТАНИЙ</h2>
+                <div class="rounds-grid">
+                    <div class="round-card">
+                        <div class="round-number">01</div>
+                        <div class="round-image">
+                            <img src="images/round1.jpg" alt="Неоновый лабиринт">
+                        </div>
+                        <div class="round-content">
+                            <h3>Неоновый лабиринт</h3>
+                            <p>Пройдите сквозь голографический лабиринт, следуя световым указателям. Неверный поворот активирует систему стирания сознания.</p>
+                        </div>
+                    </div>
+
+                    <div class="round-card">
+                        <div class="round-number">02</div>
+                        <div class="round-image">
+                            <img src="images/round2.jpg" alt="Кодовый взлом">
+                        </div>
+                        <div class="round-content">
+                            <h3>Кодовый взлом</h3>
+                            <p>Взломайте защищенную систему за ограниченное время. Каждая ошибка в коде приближает к отключению от сети навсегда.</p>
+                        </div>
+                    </div>
+
+                    <div class="round-card">
+                        <div class="round-number">03</div>
+                        <div class="round-image">
+                            <img src="images/round3.jpg" alt="Битва алгоритмов">
+                        </div>
+                        <div class="round-content">
+                            <h3>Битва алгоритмов</h3>
+                            <p>Командное состязание ИИ над цифровой пропастью. Проигравший алгоритм удаляется вместе с создавшей его командой.</p>
+                        </div>
+                    </div>
+
+                    <div class="round-card">
+                        <div class="round-number">04</div>
+                        <div class="round-image">
+                            <img src="images/round4.jpg" alt="Дуэль хакеров">
+                        </div>
+                        <div class="round-content">
+                            <h3>Дуэль хакеров</h3>
+                            <p>Выберите оппонента для цифрового поединка в киберпространстве. Проигравший теряет связь с реальностью навсегда.</p>
+                        </div>
+                    </div>
+
+                    <div class="round-card">
+                        <div class="round-number">05</div>
+                        <div class="round-image">
+                            <img src="images/round5.jpg" alt="Квантовый мост">
+                        </div>
+                        <div class="round-content">
+                            <h3>Квантовый мост</h3>
+                            <p>Пересеките мост из квантовых ячеек. Только половина стабильна в данный момент времени. Выберите правильную траекторию.</p>
+                        </div>
+                    </div>
+
+                    <div class="round-card">
+                        <div class="round-number">06</div>
+                        <div class="round-image">
+                            <img src="images/round6.jpg" alt="Финальный код">
+                        </div>
+                        <div class="round-content">
+                            <h3>Финальный код</h3>
+                            <p>Последнее испытание. Взломайте мастер-систему, защищающую главный приз. Только один может получить root-доступ.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок со стикерами -->
+        <section id="stickers" class="stickers">
+            <div class="container">
+                <h2 class="section-title">КОЛЛЕКЦИЯ СТИКЕРОВ</h2>
+                <div class="stickers-grid">
+                    <div class="sticker-card">
+                        <div class="sticker-image">
+                            <img src="images/sticker1.png" alt="Стикер - Нейро-интерфейс">
+                        </div>
+                        <div class="sticker-content">
+                            <h3>Нейро-интерфейс</h3>
+                            <p>Голографический интерфейс, который считывает мысли и эмоции участников арены.</p>
+                            <button class="download-btn" data-sticker="sticker1">Скачать</button>
+                        </div>
+                    </div>
+
+                    <div class="sticker-card">
+                        <div class="sticker-image">
+                            <img src="images/sticker2.png" alt="Стикер - Кибер-код">
+                        </div>
+                        <div class="sticker-content">
+                            <h3>Кибер-код</h3>
+                            <p>Фрагменты зашифрованного кода - ключ к пониманию цифрового лабиринта.</p>
+                            <button class="download-btn" data-sticker="sticker2">Скачать</button>
+                        </div>
+                    </div>
+
+                    <div class="sticker-card">
+                        <div class="sticker-image">
+                            <img src="images/sticker3.png" alt="Стикер - Цифровой страж">
+                        </div>
+                        <div class="sticker-content">
+                            <h3>Цифровой страж</h3>
+                            <p>ИИ-охранник в неоновой маске - символ контроля системы над участниками.</p>
+                            <button class="download-btn" data-sticker="sticker3">Скачать</button>
+                        </div>
+                    </div>
+
+                    <div class="sticker-card">
+                        <div class="sticker-image">
+                            <img src="images/sticker4.png" alt="Стикер - Номер 001">
+                        </div>
+                        <div class="sticker-content">
+                            <h3>Номер 001</h3>
+                            <p>ID первого хакера - символ надежды и сопротивления цифровой системе.</p>
+                            <button class="download-btn" data-sticker="sticker4">Скачать</button>
+                        </div>
+                    </div>
+
+                    <div class="sticker-card">
+                        <div class="sticker-image">
+                            <img src="images/sticker5.png" alt="Стикер - Квантовые сферы">
+                        </div>
+                        <div class="sticker-content">
+                            <h3>Квантовые сферы</h3>
+                            <p>Мерцающие сферы данных, которые решают судьбы союзов и предательств.</p>
+                            <button class="download-btn" data-sticker="sticker5">Скачать</button>
+                        </div>
+                    </div>
+
+                    <div class="sticker-card">
+                        <div class="sticker-image">
+                            <img src="images/sticker6.png" alt="Стикер - Неоновый символ">
+                        </div>
+                        <div class="sticker-content">
+                            <h3>Неоновый символ</h3>
+                            <p>Логотип NEON SURVIVAL - символ финального испытания и свободы.</p>
+                            <button class="download-btn" data-sticker="sticker6">Скачать</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Блок FAQ с аккордеоном -->
+        <section id="faq" class="faq">
+            <div class="container">
+                <h2 class="section-title">ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ</h2>
+                <div class="accordion">
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3>Можно ли отключиться от арены?</h3>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Согласно протоколу, участники могут проголосовать за отключение сеанса, но только если большинство согласно. Однако те, кто уже стерт, не могут переподключиться.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3>Что происходит с проигравшими?</h3>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>В реальной VR-арене проигравшие стираются из системы. В нашей веб-версии это означает окончание сеанса с возможностью повторного подключения.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3>Сколько длится сеанс?</h3>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Арена состоит из 6 цифровых испытаний. В зависимости от сложности алгоритмов и скорости обработки, полный сеанс может занять от 30 минут до нескольких часов.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3>Можно ли создавать альянсы?</h3>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Некоторые испытания (например, битва алгоритмов) требуют коллективного разума, в то время как другие являются индивидуальными вызовами хакера.</p>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item">
+                        <div class="accordion-header">
+                            <h3>Есть ли ограничения доступа?</h3>
+                            <span class="accordion-icon">+</span>
+                        </div>
+                        <div class="accordion-content">
+                            <p>Арена рекомендована для хакеров старше 18 лет из-за высокой нейрологической нагрузки и киберпсихологической напряженности.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Подвал -->
+    <footer id="contact" class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-info">
+                    <h3>Разработчик</h3>
+                    <p class="developer-name">Сафин Мирас</p>
+                    <div class="contact-info">
+                        <p><strong>Адрес:</strong> Россия, Казань</p>
+                        <p><strong>Телефон:</strong> +7 (939) 331-58-41</p>
+                        <p><strong>Email:</strong> miraska.007@gmail.com</p>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <h3>Навигация</h3>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#story">История</a></li>
+                        <li><a href="#rounds">Арена</a></li>
+                        <li><a href="#stickers">Стикеры</a></li>
+                    </ul>
+                </div>
+                <div class="footer-social">
+                    <h3>Следите за нами</h3>
+                    <div class="social-links">
+                        <a href="#" class="social-link">VK</a>
+                        <a href="#" class="social-link">Telegram</a>
+                        <a href="#" class="social-link">Instagram</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 NEON SURVIVAL. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Модальное окно для входа/регистрации -->
+    <div id="authModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div class="auth-tabs">
+                <button class="auth-tab active" data-tab="login">Вход</button>
+                <button class="auth-tab" data-tab="register">Регистрация</button>
+            </div>
+            
+            <form id="loginForm" class="auth-form active">
+                <h3>Подключение к арене</h3>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Пароль" required>
+                <button type="submit">Подключиться</button>
+            </form>
+            
+            <form id="registerForm" class="auth-form">
+                <h3>Регистрация хакера</h3>
+                <input type="text" name="nickname" placeholder="Никнейм" required>
+                <input type="email" name="email" placeholder="Email" required>
+                <input type="password" name="password" placeholder="Пароль" required>
+                <input type="password" name="confirmPassword" placeholder="Подтвердите пароль" required>
+                <button type="submit">Создать профиль</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Модальное окно профиля пользователя -->
+    <div id="profileModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="profileContent">
+                <!-- Контент профиля будет добавлен через JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Админ-панель -->
+    <div id="adminPanel" class="modal admin-panel">
+        <div class="modal-content admin-content">
+            <span class="close">&times;</span>
+            <h2>Панель администратора</h2>
+            
+            <div class="admin-tabs">
+                <button class="admin-tab active" data-tab="stickers">Управление стикерами</button>
+                <button class="admin-tab" data-tab="users">Пользователи</button>
+            </div>
+
+            <!-- Управление стикерами -->
+            <div id="stickersAdmin" class="admin-section active">
+                <div class="admin-header">
+                    <h3>Управление стикерами</h3>
+                    <button id="addStickerBtn" class="admin-btn primary">Добавить стикер</button>
+                </div>
+                
+                <div id="stickersTable" class="admin-table">
+                    <!-- Таблица стикеров будет заполнена через JavaScript -->
+                </div>
+            </div>
+
+            <!-- Управление пользователями -->
+            <div id="usersAdmin" class="admin-section">
+                <div class="admin-header">
+                    <h3>Зарегистрированные пользователи</h3>
+                    <div class="admin-stats">
+                        <span id="usersCount">0</span> участников
+                    </div>
+                </div>
+                
+                <div id="usersTable" class="admin-table">
+                    <!-- Таблица пользователей будет заполнена через JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Модальное окно редактирования стикера -->
+    <div id="editStickerModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h3 id="editStickerTitle">Редактировать стикер</h3>
+            
+            <form id="editStickerForm" class="admin-form">
+                <input type="hidden" id="editStickerId">
+                
+                <div class="form-group">
+                    <label>Название:</label>
+                    <input type="text" id="editStickerName" required>
+                </div>
+                
+                <div class="form-group">
+                    <label>Описание:</label>
+                    <textarea id="editStickerDescription" required></textarea>
+                </div>
+                
+                <div class="form-group">
+                    <label>Изображение:</label>
+                    <input type="file" id="editStickerImage" accept="image/*">
+                    <small>Оставьте пустым, чтобы сохранить текущее изображение</small>
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="admin-btn primary">Сохранить</button>
+                    <button type="button" class="admin-btn secondary" onclick="closeModal('editStickerModal')">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+    <script>
+        // Инициализация приложения
+        let gameApp;
+        document.addEventListener('DOMContentLoaded', () => {
+            gameApp = new GameApp();
+        });
+    </script>
+</body>
+</html> 

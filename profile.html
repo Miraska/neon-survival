@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Профиль - NEON SURVIVAL</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/profile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="profile-page">
+    <!-- Шапка профиля -->
+    <header class="profile-header">
+        <div class="container">
+            <div class="profile-nav">
+                <div class="logo">
+                    <img src="images/logo.svg" alt="NEON SURVIVAL" class="logo-img">
+                    <span class="logo-text">ПРОФИЛЬ</span>
+                </div>
+                
+                <nav class="profile-menu">
+                    <a href="index.html" class="profile-menu-link">
+                        <span class="icon">🏠</span>
+                        Главная
+                    </a>
+                    <button id="logoutBtn" class="profile-menu-link logout-btn">
+                        <span class="icon">🚪</span>
+                        Выход
+                    </button>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="profile-main">
+        <div class="container">
+            <!-- Основная информация профиля -->
+            <section class="profile-hero">
+                <div class="profile-avatar-large" id="profileAvatar">
+                    <!-- Аватар будет заполнен через JavaScript -->
+                </div>
+                
+                <div class="profile-info">
+                    <h1 id="profileNickname">Загрузка...</h1>
+                    <p id="profileEmail">email@example.com</p>
+                    <div id="profileRole" class="user-role">
+                        Участник
+                    </div>
+                    <div class="profile-join-date">
+                        Дата регистрации: <span id="profileJoinDate">--</span>
+                    </div>
+                </div>
+                
+                <div class="profile-actions">
+                    <button id="editProfileBtn" class="btn-primary">
+                        <span class="btn-icon">✏️</span>
+                        Редактировать профиль
+                    </button>
+                </div>
+            </section>
+
+            <!-- Статистика пользователя -->
+            <section class="profile-stats">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-icon">⬇️</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="totalDownloads">0</div>
+                            <div class="stat-label">Скачано стикеров</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">📅</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="daysSinceJoin">0</div>
+                            <div class="stat-label">Дней в игре</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">🏆</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="userRank">--</div>
+                            <div class="stat-label">Ранг</div>
+                        </div>
+                    </div>
+                    
+                    <div class="stat-card">
+                        <div class="stat-icon">📈</div>
+                        <div class="stat-info">
+                            <div class="stat-value" id="profileProgress">0%</div>
+                            <div class="stat-label">Прогресс</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Навигация по разделам профиля -->
+            <section class="profile-navigation">
+                <div class="profile-tabs">
+                    <button class="profile-tab active" data-tab="downloads">
+                        <span class="tab-icon">⬇️</span>
+                        Мои скачивания
+                    </button>
+                    <button class="profile-tab" data-tab="activity">
+                        <span class="tab-icon">📊</span>
+                        Активность
+                    </button>
+                    <button class="profile-tab" data-tab="settings">
+                        <span class="tab-icon">⚙️</span>
+                        Настройки
+                    </button>
+                </div>
+            </section>
+
+            <!-- Мои скачивания -->
+            <section id="downloadsSection" class="profile-section active">
+                <div class="section-header">
+                    <h2>Мои скачивания</h2>
+                    <div class="section-actions">
+                        <input type="text" id="downloadSearch" placeholder="Поиск стикеров..." class="search-input">
+                    </div>
+                </div>
+                
+                <div id="downloadsList" class="downloads-grid">
+                    <!-- Список скачанных стикеров будет заполнен через JavaScript -->
+                </div>
+            </section>
+
+            <!-- Активность -->
+            <section id="activitySection" class="profile-section">
+                <div class="section-header">
+                    <h2>История активности</h2>
+                </div>
+                
+                <div id="activityTimeline" class="activity-timeline">
+                    <!-- Timeline активности будет заполнен через JavaScript -->
+                </div>
+            </section>
+
+            <!-- Настройки -->
+            <section id="settingsSection" class="profile-section">
+                <div class="section-header">
+                    <h2>Настройки профиля</h2>
+                </div>
+                
+                <div class="settings-grid">
+                    <div class="setting-card">
+                        <h3>Уведомления</h3>
+                        <div class="setting-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="emailNotifications" checked>
+                                <span class="checkbox-custom"></span>
+                                Email уведомления
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="pushNotifications" checked>
+                                <span class="checkbox-custom"></span>
+                                Push уведомления
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-card">
+                        <h3>Приватность</h3>
+                        <div class="setting-options">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="publicProfile">
+                                <span class="checkbox-custom"></span>
+                                Публичный профиль
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="showStats" checked>
+                                <span class="checkbox-custom"></span>
+                                Показывать статистику
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-card">
+                        <h3>Опасная зона</h3>
+                        <div class="setting-options">
+                            <button id="clearDataBtn" class="btn-danger">
+                                Очистить все данные
+                            </button>
+                            <button id="deleteAccountBtn" class="btn-danger">
+                                Удалить аккаунт
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Модальное окно редактирования профиля -->
+    <div id="editProfileModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Редактировать профиль</h3>
+                <span class="close">&times;</span>
+            </div>
+            
+            <form id="editProfileForm" class="profile-form">
+                <div class="form-group">
+                    <label for="editNickname">Никнейм:</label>
+                    <input type="text" id="editNickname" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editEmail">Email:</label>
+                    <input type="email" id="editEmail" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="editPassword">Новый пароль (оставьте пустым, чтобы не менять):</label>
+                    <input type="password" id="editPassword">
+                </div>
+                
+                <div class="form-group">
+                    <label for="confirmPassword">Подтвердите пароль:</label>
+                    <input type="password" id="confirmPassword">
+                </div>
+                
+                <div class="form-actions">
+                    <button type="submit" class="btn-primary">Сохранить изменения</button>
+                    <button type="button" class="btn-secondary" onclick="closeModal('editProfileModal')">Отмена</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/profile.js"></script>
+    <script>
+        // Инициализация профиля пользователя
+        let userProfile;
+        document.addEventListener('DOMContentLoaded', () => {
+            userProfile = new UserProfile();
+        });
+    </script>
+</body>
+</html> 

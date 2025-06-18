@@ -1,0 +1,47 @@
+<svg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="neonGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#00FFFF;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#FF0080;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#8000FF;stop-opacity:1" />
+    </linearGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+      <feMerge> 
+        <feMergeNode in="coloredBlur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+  
+  <!-- Фон -->
+  <rect width="80" height="80" fill="#0A0A14" rx="8"/>
+  
+  <!-- Неоновые линии фона -->
+  <line x1="0" y1="20" x2="80" y2="20" stroke="#00FFFF" stroke-width="0.5" opacity="0.3"/>
+  <line x1="0" y1="40" x2="80" y2="40" stroke="#FF0080" stroke-width="0.5" opacity="0.3"/>
+  <line x1="0" y1="60" x2="80" y2="60" stroke="#8000FF" stroke-width="0.5" opacity="0.3"/>
+  <line x1="20" y1="0" x2="20" y2="80" stroke="#00FFFF" stroke-width="0.5" opacity="0.3"/>
+  <line x1="40" y1="0" x2="40" y2="80" stroke="#FF0080" stroke-width="0.5" opacity="0.3"/>
+  <line x1="60" y1="0" x2="60" y2="80" stroke="#8000FF" stroke-width="0.5" opacity="0.3"/>
+  
+  <!-- Центральный символ - N -->
+  <path d="M 20 25 L 20 55 L 25 55 L 25 35 L 35 50 L 35 55 L 40 55 L 40 25 L 35 25 L 35 45 L 25 30 L 25 25 Z" 
+        fill="url(#neonGradient)" filter="url(#glow)"/>
+  
+  <!-- Центральный символ - S -->
+  <path d="M 45 25 C 45 25 50 25 55 25 C 60 25 60 30 60 35 C 60 40 55 40 50 40 C 45 40 45 45 45 50 C 45 55 50 55 55 55 L 60 55 L 60 50 L 55 50 C 50 50 50 45 50 40 C 50 35 55 35 60 35 C 65 35 65 40 65 45 L 65 50 C 65 55 60 55 55 55 L 45 55 Z" 
+        fill="url(#neonGradient)" filter="url(#glow)" transform="scale(0.6) translate(10, 10)"/>
+  
+  <!-- Углы киберпанк -->
+  <path d="M 5 5 L 15 5 L 15 8 L 8 8 L 8 15 L 5 15 Z" fill="#00FFFF" opacity="0.8"/>
+  <path d="M 75 5 L 65 5 L 65 8 L 72 8 L 72 15 L 75 15 Z" fill="#FF0080" opacity="0.8"/>
+  <path d="M 5 75 L 15 75 L 15 72 L 8 72 L 8 65 L 5 65 Z" fill="#8000FF" opacity="0.8"/>
+  <path d="M 75 75 L 65 75 L 65 72 L 72 72 L 72 65 L 75 65 Z" fill="#00FFFF" opacity="0.8"/>
+  
+  <!-- Центральная точка -->
+  <circle cx="40" cy="40" r="3" fill="#FFFFFF" opacity="0.9"/>
+  
+  <!-- Внешняя рамка -->
+  <rect x="2" y="2" width="76" height="76" fill="none" stroke="url(#neonGradient)" stroke-width="1" rx="6" opacity="0.6"/>
+</svg> 

@@ -1,0 +1,1741 @@
+/* Основные стили */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #000;
+    overflow-x: hidden;
+
+    /* transition: all 3s ease; */
+}
+/* 
+body:hover {
+    transform: rotate(360deg);
+} */
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Утилиты */
+.section-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 3rem;
+    color: #ff0040;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* Шапка сайта */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(255, 0, 64, 0.2);
+    z-index: 1000;
+    padding: 1rem 0;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
+}
+
+.header.scrolled {
+    background: rgba(0, 0, 0, 0.98);
+    padding: 0.8rem 0;
+}
+
+.header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 50px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.logo:hover {
+    transform: scale(1.05);
+}
+
+.logo-img {
+    width: 45px;
+    height: 45px;
+    filter: drop-shadow(0 0 10px rgba(255, 0, 64, 0.5));
+    transition: all 0.3s ease;
+}
+
+.logo-text {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: #ff0040;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 0, 64, 0.5);
+    transition: all 0.3s ease;
+}
+
+/* Навигация */
+.nav-list {
+    display: flex;
+    list-style: none;
+    gap: 2.5rem;
+    align-items: center;
+}
+
+.nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    position: relative;
+    background: transparent;
+    border: 1px solid transparent;
+}
+
+.nav-link:hover {
+    color: #ff0040;
+    background: rgba(255, 0, 64, 0.1);
+    border-color: rgba(255, 0, 64, 0.3);
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 0, 64, 0.2);
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #ff0040, transparent);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::after {
+    width: 80%;
+}
+
+/* Бургер меню */
+.burger-menu {
+    display: none; /* Скрыто по умолчанию на всех устройствах */
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+    padding: 10px;
+    border-radius: 12px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    background: rgba(255, 0, 64, 0.1);
+    border: 2px solid rgba(255, 0, 64, 0.2);
+    position: relative;
+    z-index: 1001; /* Выше мобильного меню и шапки */
+    overflow: hidden;
+}
+
+.burger-menu::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.6s ease;
+}
+
+.burger-menu:hover::before {
+    left: 100%;
+}
+
+.burger-menu:hover {
+    background: rgba(255, 0, 64, 0.2);
+    transform: scale(1.1);
+    border-color: rgba(255, 0, 64, 0.4);
+    box-shadow: 0 5px 15px rgba(255, 0, 64, 0.3);
+}
+
+.burger-menu span {
+    width: 26px;
+    height: 3px;
+    background: #fff;
+    border-radius: 2px;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.4);
+    position: relative;
+    transform-origin: center;
+    margin: 3px 0;
+}
+
+.burger-menu span::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #fff, #ff0040, #fff);
+    border-radius: 2px;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+}
+
+/* Активное состояние - крестик */
+.burger-menu.active {
+    background: rgba(255, 0, 64, 0.3);
+    border-color: rgba(255, 0, 64, 0.6);
+    transform: scale(1.1) rotate(180deg);
+}
+
+.burger-menu.active span::before {
+    opacity: 1;
+}
+
+/* Первая линия - поворот в верхнюю часть крестика */
+.burger-menu.active span:nth-child(1) {
+    transform: rotate(45deg) translate(7px, 7px);
+    background: #ff0040;
+    box-shadow: 0 0 10px rgba(255, 0, 64, 0.5);
+}
+
+/* Вторая линия - исчезает с эффектом */
+.burger-menu.active span:nth-child(2) {
+    opacity: 0;
+    transform: scale(0) rotate(360deg);
+    background: #ff0040;
+}
+
+/* Третья линия - поворот в нижнюю часть крестика */
+.burger-menu.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -7px);
+    background: #ff0040;
+    box-shadow: 0 0 10px rgba(255, 0, 64, 0.5);
+}
+
+/* Дополнительная анимация при клике */
+.burger-menu:active {
+    transform: scale(0.95);
+}
+
+.burger-menu.active:active {
+    transform: scale(1.05) rotate(180deg);
+}
+
+/* Анимация пульсации для активного состояния */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 8px 25px rgba(255, 0, 64, 0.4);
+    }
+    50% {
+        box-shadow: 0 8px 25px rgba(255, 0, 64, 0.6), 0 0 0 10px rgba(255, 0, 64, 0.1);
+    }
+    100% {
+        box-shadow: 0 8px 25px rgba(255, 0, 64, 0.4);
+    }
+}
+
+.burger-menu.active {
+    animation: pulse 2s infinite;
+}
+
+/* Эффект свечения для линий крестика */
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 0, 64, 0.5);
+    }
+    50% {
+        box-shadow: 0 0 20px rgba(255, 0, 64, 0.8), 0 0 30px rgba(255, 0, 64, 0.6);
+    }
+}
+
+.burger-menu.active span:nth-child(1),
+.burger-menu.active span:nth-child(3) {
+    animation: glow 1.5s ease-in-out infinite;
+}
+
+/* Эффект исчезновения средней линии */
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.5) rotate(180deg);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0) rotate(360deg);
+    }
+}
+
+.burger-menu.active span:nth-child(2) {
+    animation: fadeOut 0.4s ease-out forwards;
+}
+
+/* Обратная анимация при возврате в состояние бургера */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0) rotate(360deg);
+    }
+    50% {
+        opacity: 0.5;
+        transform: scale(0.5) rotate(180deg);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+    }
+}
+
+.burger-menu:not(.active) span:nth-child(2) {
+    animation: fadeIn 0.4s ease-out forwards;
+}
+
+/* Дополнительные эффекты для hover состояния */
+.burger-menu:hover span {
+    background: linear-gradient(90deg, #fff, #ff0040, #fff);
+    box-shadow: 0 0 8px rgba(255, 0, 64, 0.4);
+}
+
+/* Эффект волны при клике */
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.6;
+    }
+    100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+.burger-menu::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: rgba(255, 0, 64, 0.3);
+    transform: translate(-50%, -50%) scale(0);
+    pointer-events: none;
+}
+
+.burger-menu:active::after {
+    animation: ripple 0.4s ease-out;
+}
+
+/* Мобильное меню */
+.mobile-nav {
+    display: none; /* Скрыто по умолчанию на всех устройствах */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.98), rgba(17, 17, 17, 0.98));
+    backdrop-filter: blur(20px);
+    transform: translateY(-100%);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 999;
+    border-bottom: 1px solid rgba(255, 0, 64, 0.3);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    padding-top: 80px; /* Отступ сверху для шапки */
+}
+
+.mobile-nav.active {
+    transform: translateY(0);
+}
+
+.mobile-nav-list {
+    list-style: none;
+    padding: 2rem 1.5rem;
+    max-height: calc(100vh - 140px);
+    overflow-y: auto;
+}
+
+.mobile-nav-list li {
+    margin-bottom: 0.5rem;
+}
+
+.mobile-nav-link {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    display: block;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    border: 1px solid transparent;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.mobile-nav-link::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 0, 64, 0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.mobile-nav-link:hover::before {
+    left: 100%;
+}
+
+.mobile-nav-link:hover {
+    color: #ff0040;
+    background: rgba(255, 0, 64, 0.1);
+    border-color: rgba(255, 0, 64, 0.3);
+    transform: translateX(10px);
+    box-shadow: 0 5px 15px rgba(255, 0, 64, 0.2);
+}
+
+/* Главный баннер с слайдером */
+.hero {
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-slider {
+    position: relative;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide.active {
+    opacity: 1;
+}
+
+.slide-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: -1;
+}
+
+.slide-bg::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+}
+
+.slide-bg-1 {
+    background: linear-gradient(rgba(0, 255, 255, 0.4), rgba(0, 0, 0, 0.6)), url('assets/round1.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.slide-bg-2 {
+    background: linear-gradient(rgba(255, 20, 147, 0.4), rgba(0, 0, 0, 0.6)), url('assets/round3.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.slide-bg-3 {
+    background: linear-gradient(rgba(138, 43, 226, 0.4), rgba(0, 0, 0, 0.6)), url('assets/round6.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+.slide-content {
+    text-align: center;
+    color: #fff;
+    z-index: 1;
+    max-width: 800px;
+    padding: 0 2rem;
+}
+
+.hero-title {
+    font-size: 4rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    letter-spacing: 3px;
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.hero-btn {
+    background: linear-gradient(45deg, #00FFFF, #FF1493);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.3);
+}
+
+.hero-btn:hover {
+    background: linear-gradient(45deg, #FF1493, #8A2BE2);
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(255, 20, 147, 0.5);
+}
+
+/* Управление слайдером */
+.slider-controls {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    z-index: 2;
+}
+
+.slider-btn {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.slider-btn:hover {
+    background: linear-gradient(45deg, #00FFFF, #FF1493);
+    border-color: #00FFFF;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+}
+
+.slider-dots {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: linear-gradient(45deg, #00FFFF, #FF1493);
+    transform: scale(1.2);
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+}
+
+/* Блок с описанием сюжета */
+.story {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #111, #000);
+    color: #fff;
+}
+
+.story-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+}
+
+.story-text h3 {
+    font-size: 2rem;
+    color: #ff0040;
+    margin-bottom: 1.5rem;
+}
+
+.story-text p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+    line-height: 1.8;
+    opacity: 0.9;
+}
+
+.story-rules {
+    background: rgba(255, 0, 64, 0.1);
+    padding: 2rem;
+    border-radius: 10px;
+    border-left: 4px solid #ff0040;
+    margin-top: 2rem;
+}
+
+.story-rules h4 {
+    color: #ff0040;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.story-rules ul {
+    list-style: none;
+}
+
+.story-rules li {
+    padding: 0.5rem 0;
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.story-rules li::before {
+    content: '▶';
+    position: absolute;
+    left: 0;
+    color: #ff0040;
+    font-size: 0.8rem;
+}
+
+.story-image img {
+    width: 100%;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Блоки с раундами */
+.rounds {
+    padding: 5rem 0;
+    background: #000;
+    color: #fff;
+}
+
+.rounds-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.round-card {
+    background: linear-gradient(135deg, #111, #222);
+    border-radius: 15px;
+    overflow: hidden;
+    position: relative;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: 1px solid rgba(255, 0, 64, 0.2);
+}
+
+.round-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 20px 40px rgba(255, 0, 64, 0.3);
+}
+
+.round-number {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: #ff0040;
+    color: #fff;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    z-index: 2;
+}
+
+.round-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.round-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.round-card:hover .round-image img {
+    transform: scale(1.1);
+}
+
+.round-content {
+    padding: 1.5rem;
+}
+
+.round-content h3 {
+    font-size: 1.5rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.round-content p {
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+/* Блок со стикерами */
+.stickers {
+    padding: 5rem 0;
+    background: linear-gradient(135deg, #111, #000);
+    color: #fff;
+    position: relative;
+}
+
+.stickers::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: 
+        radial-gradient(circle at 20% 20%, rgba(255, 0, 64, 0.1) 0%, transparent 50%),
+        radial-gradient(circle at 80% 80%, rgba(255, 0, 64, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+}
+
+.stickers .container {
+    position: relative;
+    z-index: 1;
+}
+
+.stickers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 2.5rem;
+    padding: 2rem 0;
+}
+
+.sticker-card {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    text-align: center;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 1px solid rgba(255, 0, 64, 0.2);
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+}
+
+.sticker-card::before {
+    content: '';
+    position: absolute;
+    top: -2px;
+    left: -2px;
+    right: -2px;
+    bottom: -2px;
+    background: linear-gradient(45deg, #ff0040, #ff1493, #ff0040);
+    border-radius: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: -1;
+}
+
+.sticker-card:hover::before {
+    opacity: 1;
+}
+
+.sticker-card:hover {
+    transform: translateY(-10px) scale(1.02);
+    box-shadow: 
+        0 20px 40px rgba(255, 0, 64, 0.3),
+        0 0 0 1px rgba(255, 0, 64, 0.5);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.04));
+}
+
+.sticker-image {
+    width: 140px;
+    height: 140px;
+    margin: 0 auto 1.5rem;
+    background: linear-gradient(135deg, #fff, #f0f0f0);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 
+        0 15px 30px rgba(0, 0, 0, 0.4),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.sticker-card:hover .sticker-image {
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.5),
+        0 0 0 3px rgba(255, 0, 64, 0.3),
+        inset 0 2px 4px rgba(255, 255, 255, 0.3);
+}
+
+.sticker-image::after {
+    content: '';
+    position: absolute;
+    top: 10%;
+    left: 10%;
+    width: 30%;
+    height: 30%;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8), transparent);
+    border-radius: 50%;
+    filter: blur(8px);
+}
+
+.sticker-image img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    z-index: 1;
+    transition: transform 0.3s ease;
+}
+
+.sticker-card:hover .sticker-image img {
+    transform: scale(1.05);
+}
+
+.sticker-content h3 {
+    font-size: 1.4rem;
+    color: #fff;
+    margin-bottom: 0.8rem;
+    font-weight: 700;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.sticker-content p {
+    color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 2rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+.download-btn {
+    background: linear-gradient(135deg, #ff0040, #d60035);
+    color: #fff;
+    border: none;
+    padding: 1rem 2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(255, 0, 64, 0.4);
+}
+
+.download-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.download-btn:hover::before {
+    left: 100%;
+}
+
+.download-btn:hover {
+    background: linear-gradient(135deg, #fff, #f0f0f0);
+    color: #ff0040;
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 
+        0 8px 25px rgba(255, 0, 64, 0.5),
+        0 0 0 2px rgba(255, 0, 64, 0.3);
+}
+
+.download-btn:active {
+    transform: translateY(-1px) scale(1.02);
+}
+
+/* FAQ с аккордеоном */
+.faq {
+    padding: 5rem 0;
+    background: #000;
+    color: #fff;
+}
+
+.accordion {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.accordion-item {
+    background: rgba(255, 255, 255, 0.05);
+    margin-bottom: 1rem;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.accordion-header {
+    padding: 1.5rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+
+.accordion-header:hover {
+    background: rgba(255, 0, 64, 0.1);
+}
+
+.accordion-header h3 {
+    font-size: 1.2rem;
+    color: #fff;
+}
+
+.accordion-icon {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: #ff0040;
+    transition: transform 0.3s ease;
+}
+
+.accordion-item.active .accordion-icon {
+    transform: rotate(45deg);
+}
+
+.accordion-content {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.accordion-item.active .accordion-content {
+    max-height: 200px;
+}
+
+.accordion-content p {
+    padding: 0 1.5rem 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+    line-height: 1.6;
+}
+
+/* Подвал */
+.footer {
+    padding: 3rem 0 1rem;
+    background: linear-gradient(135deg, #111, #000);
+    color: #fff;
+    border-top: 1px solid rgba(255, 0, 64, 0.3);
+}
+
+.footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.footer-info h3,
+.footer-links h3,
+.footer-social h3 {
+    color: #ff0040;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.developer-name {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.contact-info p {
+    margin-bottom: 0.5rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.footer-links ul {
+    list-style: none;
+}
+
+.footer-links li {
+    margin-bottom: 0.5rem;
+}
+
+.footer-links a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ff0040;
+}
+
+.social-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.social-link {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: rgba(255, 0, 64, 0.2);
+    color: #fff;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.social-link:hover {
+    background: #ff0040;
+    transform: translateY(-2px);
+}
+
+.footer-bottom {
+    text-align: center;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.6);
+}
+
+/* Модальное окно */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1001;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+    background: linear-gradient(135deg, #111, #000);
+    margin: 5% auto;
+    padding: 2rem;
+    border-radius: 15px;
+    width: 90%;
+    max-width: 400px;
+    position: relative;
+    border: 1px solid rgba(255, 0, 64, 0.3);
+}
+
+.close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.close:hover {
+    color: #ff0040;
+}
+
+.auth-tabs {
+    display: flex;
+    margin-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.auth-tab {
+    flex: 1;
+    background: none;
+    border: none;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-bottom: 2px solid transparent;
+}
+
+.auth-tab.active {
+    color: #ff0040;
+    border-bottom-color: #ff0040;
+}
+
+.auth-form {
+    display: none;
+}
+
+.auth-form.active {
+    display: block;
+}
+
+.auth-form h3 {
+    color: #fff;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.auth-form input {
+    width: 100%;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1rem;
+}
+
+.auth-form input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.auth-form input:focus {
+    outline: none;
+    border-color: #ff0040;
+}
+
+.auth-form button {
+    width: 100%;
+    background: #ff0040;
+    color: #fff;
+    border: none;
+    padding: 1rem;
+    border-radius: 5px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.auth-form button:hover {
+    background: #d60035;
+    transform: translateY(-2px);
+}
+
+/* Адаптивный дизайн */
+@media (max-width: 768px) {
+    .burger-menu {
+        display: flex;
+    }
+    
+    .nav {
+        display: none;
+    }
+    
+    .mobile-nav {
+        display: block; /* Показываем мобильное меню только на мобильных */
+    }
+    
+    .header {
+        padding: 0.8rem 0;
+    }
+    
+    .logo-img {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .logo-text {
+        font-size: 1.4rem;
+    }
+    
+    .hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .story-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+    
+    .rounds-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .stickers-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+    }
+    
+    .sticker-card {
+        padding: 1.5rem 1rem;
+    }
+    
+    .sticker-image {
+        width: 120px;
+        height: 120px;
+        margin-bottom: 1rem;
+    }
+    
+    .sticker-image img {
+        width: 80px;
+        height: 80px;
+    }
+    
+    .sticker-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .sticker-content p {
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .download-btn {
+        padding: 0.8rem 1.5rem;
+        font-size: 0.8rem;
+    }
+    
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+    
+    .social-links {
+        justify-content: center;
+    }
+    
+    .slider-controls {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+    
+    .container {
+        padding: 0 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero-title {
+        font-size: 1.8rem;
+        line-height: 1.2;
+    }
+    
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .section-title {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .round-card,
+    .sticker-card {
+        margin: 0 5px;
+    }
+    
+    .stickers-grid {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .sticker-card {
+        padding: 1.2rem 0.8rem;
+    }
+    
+    .sticker-image {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .sticker-image img {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .sticker-content h3 {
+        font-size: 1.1rem;
+    }
+    
+    .sticker-content p {
+        font-size: 0.8rem;
+    }
+    
+    .download-btn {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.75rem;
+        letter-spacing: 1px;
+    }
+    
+    .modal-content {
+        margin: 10% auto;
+        padding: 1.5rem;
+        width: 95%;
+    }
+    
+    .burger-menu {
+        width: 45px;
+        height: 45px;
+        padding: 8px;
+        position: relative;
+        z-index: 1000; /* Выше чем мобильное меню (z-index: 999) */
+    }
+    
+    .burger-menu span {
+        width: 22px;
+        height: 2.5px;
+        margin: 2.5px 0;
+    }
+    
+    /* Корректировка анимации для мобильных */
+    .burger-menu.active span:nth-child(1) {
+        transform: rotate(45deg) translate(6px, 6px);
+    }
+    
+    .burger-menu.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(6px, -6px);
+    }
+    
+    .container {
+        padding: 0 10px;
+    }
+}
+
+/* Анимации */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.round-card,
+.sticker-card {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+/* Плавная прокрутка */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Скрыть плейсхолдеры изображений */
+img {
+    background: #333;
+}
+
+.logo-img {
+    border-radius: 50%;
+}
+
+/* Явно скрываем мобильные элементы на больших экранах */
+@media (min-width: 769px) {
+    .burger-menu {
+        display: none !important;
+    }
+    
+    .mobile-nav {
+        display: none !important;
+    }
+    
+    .nav {
+        display: block;
+    }
+}
+
+/* Кнопки авторизации в шапке */
+.auth-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.auth-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.profile-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.admin-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.logout-btn {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    color: white;
+}
+
+.auth-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Админ-панель */
+.admin-panel .modal-content {
+    max-width: 1000px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.admin-content h2 {
+    color: #00ffff;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+}
+
+.admin-tabs {
+    display: flex;
+    border-bottom: 2px solid #333;
+    margin-bottom: 30px;
+}
+
+.admin-tab {
+    flex: 1;
+    padding: 15px 20px;
+    background: transparent;
+    color: #888;
+    border: none;
+    border-bottom: 3px solid transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.admin-tab.active {
+    color: #00ffff;
+    border-bottom-color: #00ffff;
+}
+
+.admin-tab:hover {
+    color: #00ffff;
+    background: rgba(0, 255, 255, 0.1);
+}
+
+.admin-section {
+    display: none;
+}
+
+.admin-section.active {
+    display: block;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.admin-header h3 {
+    color: #fff;
+    font-size: 20px;
+    margin: 0;
+}
+
+.admin-stats {
+    color: #00ffff;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.admin-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.admin-btn.primary {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.admin-btn.secondary {
+    background: #333;
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.admin-btn.danger {
+    background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%);
+    color: white;
+}
+
+.admin-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Таблицы админ-панели */
+.admin-table {
+    background: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.table-header {
+    display: grid;
+    background: #333;
+    padding: 15px;
+    font-weight: 600;
+    color: #00ffff;
+    border-bottom: 2px solid #00ffff;
+}
+
+.stickers-header {
+    grid-template-columns: 80px 1fr 2fr 120px;
+}
+
+.users-header {
+    grid-template-columns: 60px 1fr 1fr 150px 120px;
+}
+
+.table-row {
+    display: grid;
+    padding: 15px;
+    border-bottom: 1px solid #333;
+    align-items: center;
+    transition: background 0.3s ease;
+}
+
+.table-row:hover {
+    background: rgba(0, 255, 255, 0.05);
+}
+
+.table-row.stickers-row {
+    grid-template-columns: 80px 1fr 2fr 120px;
+}
+
+.table-row.users-row {
+    grid-template-columns: 60px 1fr 1fr 150px 120px;
+}
+
+.sticker-preview {
+    width: 50px;
+    height: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+    border: 2px solid #00ffff;
+}
+
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.user-role {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 500;
+}
+
+.role-admin {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    color: white;
+}
+
+.role-user {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+}
+
+.table-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.table-actions .admin-btn {
+    padding: 6px 12px;
+    font-size: 12px;
+}
+
+/* Формы админ-панели */
+.admin-form {
+    max-width: 500px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    color: #fff;
+    margin-bottom: 8px;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    background: #1e1e1e;
+    border: 2px solid #333;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #00ffff;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.3);
+}
+
+.form-group textarea {
+    min-height: 80px;
+    resize: vertical;
+}
+
+.form-group small {
+    color: #888;
+    font-size: 12px;
+    margin-top: 5px;
+    display: block;
+}
+
+.form-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+/* Профиль пользователя */
+.profile-content {
+    text-align: center;
+    padding: 20px;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 20px;
+    color: white;
+    font-size: 36px;
+    font-weight: bold;
+}
+
+.profile-info h3 {
+    color: #00ffff;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.profile-info p {
+    color: #ccc;
+    margin-bottom: 15px;
+}
+
+.profile-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.stat-item {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #333;
+}
+
+.stat-value {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #00ffff;
+}
+
+.stat-label {
+    font-size: 12px;
+    color: #888;
+    text-transform: uppercase;
+} 
